@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../features/splash/presentation/views/splash_view.dart';
 import 'app_routes.dart';
 
 class AppRouter {
@@ -7,7 +8,8 @@ class AppRouter {
     switch (settings.name) {
       case AppRoutes.login:
         return MaterialPageRoute(builder: (context) => Scaffold());
-
+      case AppRoutes.splash:
+        return MaterialPageRoute(builder: (context) => const SplashView());
       default:
         return MaterialPageRoute(
           builder: (context) =>
