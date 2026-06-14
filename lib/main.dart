@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'core/routing/app_router.dart';
 import 'core/routing/app_routes.dart';
@@ -13,17 +14,45 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      initialRoute: AppRoutes.splash,
-      onGenerateRoute: AppRouter.onGenerateRoute,
-      debugShowCheckedModeBanner: false,
-      title: 'Salahia',
-      themeMode: ThemeMode.light,
-      theme: ThemeData(
-        fontFamily: 'Cairo',
-        primaryColor: AppColors.mainBlue,
-        scaffoldBackgroundColor: AppColors.white,
-      ),
+    return ScreenUtilInit(
+      designSize: const Size(390, 844),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        return MaterialApp(
+          initialRoute: AppRoutes.splash,
+          onGenerateRoute: AppRouter.onGenerateRoute,
+          debugShowCheckedModeBanner: false,
+          title: 'Salahia',
+          themeMode: ThemeMode.light,
+          locale: const Locale('ar'),
+          builder: (context, child) {
+            return Directionality(
+              textDirection: TextDirection.rtl,
+              child: child ?? const SizedBox.shrink(),
+            );
+          },
+          theme: ThemeData(
+            fontFamily: 'Cairo',
+            primaryColor: AppColors.mainBlue,
+            scaffoldBackgroundColor: AppColors.white,
+            colorScheme: ColorScheme.fromSeed(
+              seedColor: AppColors.mainBlue,
+              brightness: Brightness.light,
+            ),
+            elevatedButtonTheme: ElevatedButtonThemeData(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: AppColors.mainBlue,
+                foregroundColor: AppColors.white,
+                elevation: 0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
+                ),
+              ),
+            ),
+          ),
+        );
+      },
     );
   }
 }

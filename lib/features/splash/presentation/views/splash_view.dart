@@ -18,7 +18,7 @@ class SplashView extends StatelessWidget {
           delay: const Duration(seconds: 2),
           child: Image.asset(AppImages.appLogo, width: context.width(0.80)),
           onFinish: (direction) {
-            Navigator.pushReplacementNamed(context, AppRoutes.login);
+            Navigator.pushReplacementNamed(context, AppRoutes.onboarding);
           },
         ),
       ),
