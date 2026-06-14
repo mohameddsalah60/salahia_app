@@ -1,5 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:salahia/core/helpers/extinctions.dart';
+import 'package:salahia/core/routing/app_routes.dart';
 import 'package:salahia/core/utils/app_images.dart';
 
 import '../../../../core/utils/app_colors.dart';
@@ -14,10 +16,10 @@ class SplashView extends StatelessWidget {
       body: Center(
         child: FadeOut(
           delay: const Duration(seconds: 2),
-          child: Image.asset(
-            AppImages.appLogo,
-            width: MediaQuery.sizeOf(context).width * .80,
-          ),
+          child: Image.asset(AppImages.appLogo, width: context.width(0.80)),
+          onFinish: (direction) {
+            Navigator.pushReplacementNamed(context, AppRoutes.login);
+          },
         ),
       ),
     );
